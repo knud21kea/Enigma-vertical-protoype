@@ -14,14 +14,14 @@ public class Main {
         //Can both encode a string to numbers and decode numbers to a string
 
         //Encode or decode?
-        System.out.println("Enigma");
-        System.out.print("\nTast e til encode eller d til decode ");
+        System.out.println("\nVelkommen til Enigma!");
+        System.out.print("\nTast e til encode eller d til decode: ");
         String option = input.nextLine();
 
         if (option.equals("e") || option.equals("E")) {
             //encode
             //input a string
-            System.out.print("Indtast en streng ");
+            System.out.print("Indtast en streng: ");
             String inputString = input.nextLine();
 
             //convert to uppercase
@@ -35,13 +35,13 @@ public class Main {
             String outputString = convertListOfNumbersToString(intArray, inputLength);
 
             //output encoded string
-            System.out.println(outputString);
+            System.out.println("Koden er: " + outputString);
 
         } else if (option.equals("d") || option.equals("D")) {
             //decode
             //input a list of numbers - test with "{7, 15, 4, 20, 0, 7, 29, 5, 20, 0, 4, 21, 0, 5, 18, 0, 6, 15, 18, 0, 19, 5, 10}"
-            System.out.println("Input a list of numbers as {x, y, ...}");
-            System.out.print("Or paste a previously outputted code: ");
+            System.out.println("Indtast en liste som {x, y, ...}");
+            System.out.print("Eller paste en tidligere udskrevet kode: ");
             String inputString = input.nextLine();
 
             //Find how many code numbers in the list
@@ -52,6 +52,7 @@ public class Main {
             String[] subString = sliceStringIntoCodeStrings(inputString, elements);
 
             //convert the code number strings to code numbers and output the decoded letters
+            System.out.print("Teksten var: ");
             for (int i = 0; i < elements; i++) {
                 codeString[i] = Integer.parseInt(subString[i]);
                 subString[i] = convertNumberToLetter(codeString[i]);
@@ -80,11 +81,11 @@ public class Main {
 
     //method to convert a list of numbers to a string
     public static String convertListOfNumbersToString(int[] intArray, int inputLength) {
-        String outputString = "{ ";
+        String outputString = "{";
         for (int i = 0; i < inputLength - 1; i++) {
             outputString += intArray[i] + ", "; //todo research StringBuilder
         }
-        outputString = outputString + intArray[inputLength - 1] + " }";
+        outputString = outputString + intArray[inputLength - 1] + "}";
         return outputString;
     }
 
