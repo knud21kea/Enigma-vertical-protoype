@@ -88,7 +88,7 @@ public class Main {
         for (int i = 0; i < inputLength - 1; i++) {
             outputString += intArray[i] + ", "; //todo research StringBuilder
         }
-        outputString = outputString + intArray[inputLength - 1] + "}";
+        outputString += intArray[inputLength - 1] + "}";
         return outputString;
     }
 
