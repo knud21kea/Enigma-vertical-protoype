@@ -38,7 +38,13 @@ public class Main {
             //decode
             System.out.println("Decoding...");
             //input a list of numbers - test with { 1, 2, 10, 20 }
-
+            String inputString = "{ 1, 2, 3, 23, 12, 0 }";
+            int elements = getNumberOfElements(inputString);
+            System.out.println(elements);
+            String[] subString = sliceStringIntoCodeStrings(inputString, elements);
+            for (int i=0;i<elements;i++) {
+                System.out.println(subString[i]);
+            }
 
 
         } else {
@@ -83,9 +89,37 @@ public class Main {
     //find how many elements = number of commas +1
     public static int getNumberOfElements (String inputString) {
         int firstComma = inputString.indexOf(",");
+        int nextComma = 0;
         int lastComma = inputString.lastIndexOf("," , firstComma + 1);
-        int count = 0;
+        int count = -1;
+        while (nextComma != lastComma) {
+            count++;
+            nextComma = inputString.indexOf("," , firstComma + 1);
+            firstComma = nextComma;
+        }
+        return count +1;
     }
 
-
+public static String[] sliceStringIntoCodeStrings (String inputString, int codes) {
+        String[] codeString = new String[codes];
+        for (int i=0;i<codes;i++) {
+            codeString[i] = "";
+        }
+        int code = 0;
+        int position = 0;
+        char ch = '{';
+        while (ch != '}') {
+            ch = inputString.charAt(position);
+            if (Character.isDigit(ch)) {
+                while (Character.isDigit(ch)) {
+                    codeString[code] += ch;
+                    position++;
+                    ch = inputString.charAt(position);
+                }
+                code++;
+            }
+            position++;
+        }
+        return codeString;
+}
 }
