@@ -5,6 +5,20 @@ public class Main {
     public static void main(String[] args) {
 	// Enigma vertical prototype
 
+        //Intro
+
+        //Encode or decode?
+
+        //if encode
+        //input a string - test with "KODE"
+        //convert to uppercase (method)
+        //call stringToIntArray()
+        //call convertListOfNumbersToString
+        //output encoded string
+
+        //else decode
+        //input a list of numbers - test with 1,2,3,4
+
 
         //String from int array
 
