@@ -12,26 +12,31 @@ public class Main {
         //Intro
 
         //Encode or decode?
+        System.out.print("\nTast e til encode eller d til decode ");
+        String option = input.nextLine();
+        if (option.equals("e") || option.equals("E")) {
 
-        //if encode
-        //input a string
-        String inputString = "abcdZ";
+            //if encode
+            //input a string
+            System.out.print("Indtast en streng ");
+            String inputString = input.nextLine();
 
-        //convert to uppercase
-        inputString = inputString.toUpperCase();
-        final int inputLength = inputString.length();
+            //convert to uppercase
+            inputString = inputString.toUpperCase();
+            final int inputLength = inputString.length();
 
-        //call stringToIntArray()
-        int[] intArray = stringToIntArray(inputString, inputLength);
+            //call stringToIntArray()
+            int[] intArray = stringToIntArray(inputString, inputLength);
 
-        //call convertListOfNumbersToString
-        String outputString = convertListOfNumbersToString(intArray, inputLength);
+            //call convertListOfNumbersToString
+            String outputString = convertListOfNumbersToString(intArray, inputLength);
 
-        //output encoded string
-        System.out.println(outputString);
+            //output encoded string
+            System.out.println(outputString);
+        }
 
         //else decode
-        //input a list of numbers - test with 1,2,3,4
+        //input a list of numbers - test with { 1, 2, 10, 20 }
 
     }
 
