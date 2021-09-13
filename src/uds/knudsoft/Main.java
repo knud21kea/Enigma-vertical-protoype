@@ -28,10 +28,12 @@ public class Main {
             inputString = inputString.toUpperCase();
             final int inputLength = inputString.length();
 
-            //call stringToIntArray()
+            //convert the input string to a list of numbers (int array)
             int[] intArray = stringToIntArray(inputString, inputLength);
 
-            //call convertListOfNumbersToString
+            //Could shift here
+
+            //convert the list of numbers to a formatted string of codes
             String outputString = convertListOfNumbersToString(intArray, inputLength);
 
             //output encoded string
@@ -51,10 +53,11 @@ public class Main {
             int[] codeString = new int[elements];
             String[] subString = sliceStringIntoCodeStrings(inputString, elements);
 
-            //convert the code number strings to code numbers and output the decoded letters
+            //convert the code number strings to code numbers and output the decoded letters.
             System.out.print("Teksten var: ");
             for (int i = 0; i < elements; i++) {
                 codeString[i] = Integer.parseInt(subString[i]);
+                //could shift here
                 subString[i] = convertNumberToLetter(codeString[i]);
                 System.out.print(subString[i]);
             }
