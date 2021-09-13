@@ -16,7 +16,7 @@ public class Main {
         String option = input.nextLine();
         if (option.equals("e") || option.equals("E")) {
 
-            //if encode
+            //encode
             //input a string
             System.out.print("Indtast en streng ");
             String inputString = input.nextLine();
@@ -33,11 +33,17 @@ public class Main {
 
             //output encoded string
             System.out.println(outputString);
+        } else if (option.equals("d") || option.equals("D")) {
+
+            //decode
+            System.out.println("Decoding...");
+            //input a list of numbers - test with { 1, 2, 10, 20 }
+
+
+
+        } else {
+            //exit
         }
-
-        //else decode
-        //input a list of numbers - test with { 1, 2, 10, 20 }
-
     }
 
     //method to convert a string to a list of numbers
@@ -74,7 +80,12 @@ public class Main {
         return characters.substring(number, number + 1);
     }
 
-    //convert users input to captitals
+    //find how many elements = number of commas +1
+    public static int getNumberOfElements (String inputString) {
+        int firstComma = inputString.indexOf(",");
+        int lastComma = inputString.lastIndexOf("," , firstComma + 1);
+        int count = 0;
+    }
 
 
 }
