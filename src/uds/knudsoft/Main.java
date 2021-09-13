@@ -45,7 +45,7 @@ public class Main {
             String inputString = input.nextLine();
 
             //Find how many code numbers in the list
-            int elements = getNumberOfElements(inputString);
+            final int elements = getNumberOfElements(inputString);
 
             //Extract the code numbers with custom algorithm
             int[] codeString = new int[elements];
