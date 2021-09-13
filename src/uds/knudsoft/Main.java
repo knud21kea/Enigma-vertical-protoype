@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Main {
 
     static Scanner input = new Scanner(System.in);
+    static String CHARACTERS = " ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
 
     public static void main(String[] args) {
         // Enigma vertical prototype
@@ -78,8 +79,7 @@ public class Main {
 
     //method to convert 1 letter to a number
     public static int letterToInt(String letter) {
-        String characters = " ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
-        return characters.indexOf(letter);
+        return CHARACTERS.indexOf(letter);
     }
 
     //method to convert a list of numbers to a string
@@ -94,8 +94,7 @@ public class Main {
 
     //method to convert 1 number to a letter
     public static String convertNumberToLetter(int number) {
-        String characters = " ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
-        return characters.substring(number, number + 1);
+        return CHARACTERS.substring(number, number + 1);
     }
 
     //find how many elements = number of commas +1
