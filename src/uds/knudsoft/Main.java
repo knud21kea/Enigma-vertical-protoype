@@ -14,8 +14,8 @@ public class Main {
         //Encode or decode?
         System.out.print("\nTast e til encode eller d til decode ");
         String option = input.nextLine();
-        if (option.equals("e") || option.equals("E")) {
 
+        if (option.equals("e") || option.equals("E")) {
             //encode
             //input a string
             System.out.print("Indtast en streng ");
@@ -33,22 +33,27 @@ public class Main {
 
             //output encoded string
             System.out.println(outputString);
+
         } else if (option.equals("d") || option.equals("D")) {
-
             //decode
-            System.out.println("Decoding...");
-            //input a list of numbers - test with { 1, 2, 10, 20 }
-            String inputString = "{ 1, 2, 3, 23, 12, 0 }";
+            //input a list of numbers - test with "{7, 15, 4, 20, 0, 7, 29, 5, 20, 0, 4, 21, 0, 5, 18, 0, 6, 15, 18, 0, 19, 5, 10}"
+            System.out.println("Input a list of numbers as {x, y, ...}");
+            System.out.println("Or paste a previously outputted code: ");
+            String inputString = input.nextLine();
+
+            //Find how many code numbers in the list
             int elements = getNumberOfElements(inputString);
-            System.out.println(elements);
+
+            //Extract the code numbers with custom algorithm
+            int[] codeString = new int[elements];
             String[] subString = sliceStringIntoCodeStrings(inputString, elements);
-            for (int i=0;i<elements;i++) {
-                System.out.println(subString[i]);
+
+            //convert the code number strings to code numbers and output the decoded letters
+            for (int i = 0; i < elements; i++) {
+                codeString[i] = Integer.parseInt(subString[i]);
+                subString[i] = convertNumberToLetter(codeString[i]);
+                System.out.print(subString[i]);
             }
-
-
-        } else {
-            //exit
         }
     }
 
@@ -71,13 +76,13 @@ public class Main {
     }
 
     //method to convert a list of numbers to a string
-    public static String convertListOfNumbersToString (int[] intArray, int inputLength) {
+    public static String convertListOfNumbersToString(int[] intArray, int inputLength) {
         String outputString = "{ ";
-        for (int i=0;i<inputLength-1;i++) {
-            outputString = outputString + intArray[i] + ", ";
+        for (int i = 0; i < inputLength - 1; i++) {
+            outputString += intArray[i] + ", ";
         }
-        outputString = outputString + intArray[inputLength-1] + " }";
-    return outputString;
+        outputString = outputString + intArray[inputLength - 1] + " }";
+        return outputString;
     }
 
     //method to convert 1 number to a letter
@@ -87,22 +92,22 @@ public class Main {
     }
 
     //find how many elements = number of commas +1
-    public static int getNumberOfElements (String inputString) {
+    public static int getNumberOfElements(String inputString) {
         int firstComma = inputString.indexOf(",");
         int nextComma = 0;
-        int lastComma = inputString.lastIndexOf("," , firstComma + 1);
+        int lastComma = inputString.lastIndexOf(",", firstComma + 1);
         int count = -1;
         while (nextComma != lastComma) {
             count++;
-            nextComma = inputString.indexOf("," , firstComma + 1);
+            nextComma = inputString.indexOf(",", firstComma + 1);
             firstComma = nextComma;
         }
-        return count +1;
+        return count + 1;
     }
 
-public static String[] sliceStringIntoCodeStrings (String inputString, int codes) {
+    public static String[] sliceStringIntoCodeStrings(String inputString, int codes) {
         String[] codeString = new String[codes];
-        for (int i=0;i<codes;i++) {
+        for (int i = 0; i < codes; i++) {
             codeString[i] = "";
         }
         int code = 0;
@@ -121,5 +126,5 @@ public static String[] sliceStringIntoCodeStrings (String inputString, int codes
             position++;
         }
         return codeString;
-}
+    }
 }
