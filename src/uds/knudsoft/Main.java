@@ -10,8 +10,11 @@ public class Main {
         // Enigma vertical prototype
 
         //Intro
+        //Number cipher using danish alphabet and space
+        //Can both encode a string to numbers and decode numbers to a string
 
         //Encode or decode?
+        System.out.println("Enigma");
         System.out.print("\nTast e til encode eller d til decode ");
         String option = input.nextLine();
 
@@ -38,7 +41,7 @@ public class Main {
             //decode
             //input a list of numbers - test with "{7, 15, 4, 20, 0, 7, 29, 5, 20, 0, 4, 21, 0, 5, 18, 0, 6, 15, 18, 0, 19, 5, 10}"
             System.out.println("Input a list of numbers as {x, y, ...}");
-            System.out.println("Or paste a previously outputted code: ");
+            System.out.print("Or paste a previously outputted code: ");
             String inputString = input.nextLine();
 
             //Find how many code numbers in the list
@@ -79,7 +82,7 @@ public class Main {
     public static String convertListOfNumbersToString(int[] intArray, int inputLength) {
         String outputString = "{ ";
         for (int i = 0; i < inputLength - 1; i++) {
-            outputString += intArray[i] + ", ";
+            outputString += intArray[i] + ", "; //todo research StringBuilder
         }
         outputString = outputString + intArray[inputLength - 1] + " }";
         return outputString;
@@ -105,6 +108,7 @@ public class Main {
         return count + 1;
     }
 
+    //extract code strings from input string
     public static String[] sliceStringIntoCodeStrings(String inputString, int codes) {
         String[] codeString = new String[codes];
         for (int i = 0; i < codes; i++) {
@@ -113,7 +117,7 @@ public class Main {
         int code = 0;
         int position = 0;
         char ch = '{';
-        while (ch != '}') {
+        while (ch != '}') { //stop if end of list
             ch = inputString.charAt(position);
             if (Character.isDigit(ch)) {
                 while (Character.isDigit(ch)) {
@@ -121,9 +125,9 @@ public class Main {
                     position++;
                     ch = inputString.charAt(position);
                 }
-                code++;
+                code++; //move to next code string
             }
-            position++;
+            position++; //point to next character
         }
         return codeString;
     }
